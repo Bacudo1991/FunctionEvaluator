@@ -23,6 +23,8 @@ namespace Evaluator.Logic
 
         public bool IsFull => _top == N;
 
+        public T GetItemInTop() => _stack[_top - 1];
+        
         public void Push(T item)
         {
             if (IsFull)
@@ -41,7 +43,7 @@ namespace Evaluator.Logic
                 throw new Exception("Stack Empty");
             }
 
-            var item = _stack[_top];
+            var item = _stack[_top - 1];
             _top--;
             return item;
         }
