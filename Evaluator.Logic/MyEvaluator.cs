@@ -30,18 +30,15 @@ namespace Evaluator.Logic
             return stack.Pop();
         }
 
-        private static double Calculate(double number1, char @operator, double number2)
+        private static double Calculate(double number1, char op, double number2) => op switch
         {
-            switch (@operator)
-            {
-                case '^': return Math.Pow(number1, number2);
-                case '*': return number1 * number2;
-                case '/': return number1 / number2;
-                case '+': return number1 + number2;
-                case '-': return number1 - number2;
-                default: throw new Exception("Invalid Operator");
-            }
-        }
+            '^' => Math.Pow(number1, number2),
+            '*' => number1 * number2,
+            '/' => number1 / number2,
+            '+' => number1 + number2,
+            '-' => number1 - number2,
+            _ => throw new Exception("Invalid Operator"),
+        };
 
         private static string ToPostfix(string infix)
         {
@@ -91,40 +88,23 @@ namespace Evaluator.Logic
             return postfix;
         }
 
-        private static bool IsOperator(char item)
-        {
-            if (item == '(' || item == ')' || item == '^' || item == '*' || item == '/' || item == '+' || item == '-')
-            {
-                return true;
-            }
-            return false;
-        }
+        private static bool IsOperator(char item) => item is '^' or '/' or '*' or '%' or '+' or '-' or '(' or ')';
 
-        private static int PriorityInStack(char @operator)
+        private static int PriorityInStack(char op) => op switch
         {
-            switch (@operator)
-            {
-                case '^': return 3;
-                case '*': return 2;
-                case '/': return 2;
-                case '+': return 1;
-                case '-': return 1;
-                case '(': return 0;
-                default: throw new Exception("Invalid Operator");
-            }
-        }
-        private static int PriorityInExpresion(char @operator)
+                '^' => 3,
+                '*' or '/' => 2,
+                '+' or '-' => 1,
+                '(' => 0,
+                _=> throw new Exception("Invalid Expresion.")            
+        };
+        private static int PriorityInExpresion(char op) => op switch
         {
-            switch (@operator)
-            {
-                case '^': return 4;
-                case '*': return 2;
-                case '/': return 2;
-                case '+': return 1;
-                case '-': return 1;
-                case '(': return 5;
-                default: throw new Exception("Invalid Operator");
-            }
-        }
+            '^' => 4,
+            '*' or '/' or '%' => 2,
+            '+' or '-' => 1,
+            '(' => 5,
+            _=> throw new Exception("Invalid Expresion.")            
+        };
     }
 }
