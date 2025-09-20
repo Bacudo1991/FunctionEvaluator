@@ -76,7 +76,8 @@ public class MyEvaluator
         }
         return postfix;
     }
-    private static bool IsOperator(char item) => item is '^' or '/' or '*' or '%' or '+' or '-' or '(' or ')';
+    private static bool IsOperator(char item) => item is '^' or '/' or '*' 
+        or '%' or '+' or '-' or '(' or ')';
     private static int PriorityInStack(char op) => op switch
     {
         '^' => 3,
