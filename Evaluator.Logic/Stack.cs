@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Evaluator.Logic
+﻿namespace Evaluator.Logic
 {
     public class Stack<T>
     {

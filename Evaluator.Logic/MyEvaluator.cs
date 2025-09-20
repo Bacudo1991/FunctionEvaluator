@@ -1,6 +1,5 @@
 ﻿
 using System.Globalization;
-
 namespace Evaluator.Logic;
 
 public class MyEvaluator
