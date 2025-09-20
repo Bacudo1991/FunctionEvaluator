@@ -55,7 +55,7 @@
             // txtDisplay
             // 
             txtDisplay.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtDisplay.BackColor = Color.FromArgb(0, 192, 0);
+            txtDisplay.BackColor = SystemColors.Highlight;
             txtDisplay.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtDisplay.ForeColor = Color.White;
             txtDisplay.Location = new Point(12, 12);
@@ -198,7 +198,7 @@
             // btnResult
             // 
             btnResult.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnResult.BackColor = Color.FromArgb(255, 128, 0);
+            btnResult.BackColor = Color.Aqua;
             btnResult.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnResult.ForeColor = Color.Black;
             btnResult.Location = new Point(183, 251);
@@ -211,7 +211,7 @@
             // 
             // btnPlus
             // 
-            btnPlus.BackColor = Color.FromArgb(255, 128, 0);
+            btnPlus.BackColor = Color.Aqua;
             btnPlus.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPlus.ForeColor = Color.Black;
             btnPlus.Location = new Point(183, 192);
@@ -224,7 +224,7 @@
             // 
             // btnMultiply
             // 
-            btnMultiply.BackColor = Color.FromArgb(255, 128, 0);
+            btnMultiply.BackColor = Color.Aqua;
             btnMultiply.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnMultiply.ForeColor = Color.Black;
             btnMultiply.Location = new Point(183, 133);
@@ -237,7 +237,7 @@
             // 
             // btnOpenParenthesis
             // 
-            btnOpenParenthesis.BackColor = Color.FromArgb(255, 128, 0);
+            btnOpenParenthesis.BackColor = Color.Aqua;
             btnOpenParenthesis.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnOpenParenthesis.ForeColor = Color.Black;
             btnOpenParenthesis.Location = new Point(183, 74);
@@ -250,7 +250,7 @@
             // 
             // btnMinus
             // 
-            btnMinus.BackColor = Color.FromArgb(255, 128, 0);
+            btnMinus.BackColor = Color.Aqua;
             btnMinus.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnMinus.ForeColor = Color.Black;
             btnMinus.Location = new Point(243, 192);
@@ -263,7 +263,7 @@
             // 
             // btnDivide
             // 
-            btnDivide.BackColor = Color.FromArgb(255, 128, 0);
+            btnDivide.BackColor = Color.Aqua;
             btnDivide.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDivide.ForeColor = Color.Black;
             btnDivide.Location = new Point(243, 133);
@@ -276,7 +276,7 @@
             // 
             // btnCloseParenthesis
             // 
-            btnCloseParenthesis.BackColor = Color.FromArgb(255, 128, 0);
+            btnCloseParenthesis.BackColor = Color.Aqua;
             btnCloseParenthesis.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCloseParenthesis.ForeColor = Color.Black;
             btnCloseParenthesis.Location = new Point(243, 74);
@@ -290,7 +290,7 @@
             // btnPow
             // 
             btnPow.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnPow.BackColor = Color.FromArgb(255, 128, 0);
+            btnPow.BackColor = Color.Aqua;
             btnPow.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPow.ForeColor = Color.Black;
             btnPow.Location = new Point(303, 192);
@@ -304,7 +304,7 @@
             // btnClear
             // 
             btnClear.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnClear.BackColor = Color.FromArgb(255, 128, 0);
+            btnClear.BackColor = Color.Aqua;
             btnClear.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.Black;
             btnClear.Location = new Point(303, 133);
@@ -318,7 +318,7 @@
             // btnDelete
             // 
             btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnDelete.BackColor = Color.FromArgb(255, 128, 0);
+            btnDelete.BackColor = Color.Aqua;
             btnDelete.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.Black;
             btnDelete.Location = new Point(303, 74);
