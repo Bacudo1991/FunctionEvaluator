@@ -24,7 +24,7 @@ namespace Evaluator.Logic
         public bool IsFull => _top == N;
 
         public T GetItemInTop() => _stack[_top - 1];
-        
+
         public void Push(T item)
         {
             if (IsFull)

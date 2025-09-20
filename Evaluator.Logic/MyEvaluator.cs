@@ -1,20 +1,36 @@
 ﻿
+using System.Globalization;
+
 namespace Evaluator.Logic
 {
     public class MyEvaluator
     {
         public static double Evaluate(string infix)
         {
-            var postfix = ToPostfix(infix); 
+            var postfix = ToPostfix(infix);
             return Calculate(postfix);
         }
 
         private static double Calculate(string postfix)
         {
             var stack = new Stack<double>(100);
+            var numberBuffer = string.Empty;
+
             for (int i = 0; i < postfix.Length; i++)
             {
-                if (IsOperator(postfix[i]))
+                if (char.IsDigit(postfix[i]) || postfix[i] == '.')
+                {                    
+                    numberBuffer += postfix[i];
+                }
+                else if (postfix[i] == ' ')
+                {                    
+                    if (!string.IsNullOrEmpty(numberBuffer))
+                    {
+                        stack.Push(double.Parse(numberBuffer, CultureInfo.InvariantCulture));
+                        numberBuffer = string.Empty;
+                    }
+                }
+                else if (IsOperator(postfix[i]))
                 {
                     var number2 = stack.Pop();
                     var number1 = stack.Pop();
@@ -24,8 +40,12 @@ namespace Evaluator.Logic
                 else
                 {
                     var number = (double)postfix[i] - 48;
-                    stack.Push(number);                    
+                    stack.Push(number);
                 }
+            }
+            if (!string.IsNullOrEmpty(numberBuffer))
+            {
+                stack.Push(double.Parse(numberBuffer, CultureInfo.InvariantCulture));
             }
             return stack.Pop();
         }
@@ -43,47 +63,66 @@ namespace Evaluator.Logic
         private static string ToPostfix(string infix)
         {
             var stack = new Stack<char>(100);
-                var postfix = string.Empty;
+            var postfix = string.Empty;
+            var numberBuffer = string.Empty;
+
             for (int i = 0; i < infix.Length; i++)
             {
-                if (IsOperator(infix[i]))
+                if (infix[i] == ' ')
+                    continue;
+
+                if (char.IsDigit(infix[i]) || infix[i] == '.')
                 {
-                    if (stack.IsEmpty)
+                    numberBuffer += infix[i];
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(numberBuffer))
                     {
-                        stack.Push(infix[i]);
+                        postfix += numberBuffer + ' ';
+                        numberBuffer = string.Empty;
                     }
-                    else
+
+                    if (IsOperator(infix[i]))
                     {
-                        if (infix[i] == ')')
+                        if (stack.IsEmpty)
                         {
-                            do
-                            {
-                                postfix += stack.Pop(); 
-                            } while (stack.GetItemInTop() != '(');
-                            stack.Pop();
+                            stack.Push(infix[i]);
                         }
-                        else 
+                        else
                         {
-                            if (PriorityInExpresion(infix[i]) > PriorityInStack(stack.GetItemInTop()))
+                            if (infix[i] == ')')
                             {
-                                stack.Push(infix[i]);
+                                do
+                                {
+                                    postfix += stack.Pop();
+                                } while (stack.GetItemInTop() != '(');
+                                stack.Pop();
                             }
                             else
                             {
-                                postfix += stack.Pop();
-                                stack.Push(infix[i]);
+                                if (PriorityInExpresion(infix[i]) > PriorityInStack(stack.GetItemInTop()))
+                                {
+                                    stack.Push(infix[i]);
+                                }
+                                else
+                                {
+                                    postfix += stack.Pop();
+                                    stack.Push(infix[i]);
+                                }
                             }
                         }
                     }
-                }   
-                else
-                {
-                    postfix += infix[i];
                 }
             }
+            if (!string.IsNullOrEmpty(numberBuffer))
+            {
+                postfix += numberBuffer + " ";
+            }
+
             while (!stack.IsEmpty)
             {
-                postfix += stack.Pop();
+                postfix += stack.Pop() + " ";
             }
             return postfix;
         }
