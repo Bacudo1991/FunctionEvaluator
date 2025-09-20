@@ -136,5 +136,4 @@ public class MyEvaluator
         '-' => number1 - number2,
         _ => throw new Exception("Invalid Operator"),
     };
-
 }
