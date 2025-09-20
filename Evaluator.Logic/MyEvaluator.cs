@@ -10,6 +10,7 @@ public class MyEvaluator
         var postfix = ToPostfix(infix);
         return Calculate(postfix);
     }
+    
     private static string ToPostfix(string infix)
     {
         var stack = new Stack<char>(100);
@@ -69,15 +70,16 @@ public class MyEvaluator
         {
             postfix += numberBuffer + " ";
         }
-
         while (!stack.IsEmpty)
         {
             postfix += stack.Pop() + " ";
         }
         return postfix;
     }
+
     private static bool IsOperator(char item) => item is '^' or '/' or '*' 
         or '%' or '+' or '-' or '(' or ')';
+
     private static int PriorityInStack(char op) => op switch
     {
         '^' => 3,
@@ -86,6 +88,7 @@ public class MyEvaluator
         '(' => 0,
         _ => throw new Exception("Invalid Expresion.")
     };
+
     private static int PriorityInExpresion(char op) => op switch
     {
         '^' => 4,
@@ -94,6 +97,7 @@ public class MyEvaluator
         '(' => 5,
         _ => throw new Exception("Invalid Expresion.")
     };
+
     private static double Calculate(string postfix)
     {
         var stack = new Stack<double>(100);
@@ -127,6 +131,7 @@ public class MyEvaluator
         }
         return stack.Pop();
     }
+
     private static double Calculate(double number1, char op, double number2) => op switch
     {
         '^' => Math.Pow(number1, number2),
