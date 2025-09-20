@@ -37,11 +37,6 @@ namespace Evaluator.Logic
                     var result = Calculate(number1, postfix[i], number2);
                     stack.Push(result);
                 }
-                else
-                {
-                    var number = (double)postfix[i] - 48;
-                    stack.Push(number);
-                }
             }
             if (!string.IsNullOrEmpty(numberBuffer))
             {
@@ -96,12 +91,12 @@ namespace Evaluator.Logic
                                 do
                                 {
                                     postfix += stack.Pop();
-                                } while (stack.GetItemInTop() != '(');
+                                } while (stack.Peek() != '(');
                                 stack.Pop();
                             }
                             else
                             {
-                                if (PriorityInExpresion(infix[i]) > PriorityInStack(stack.GetItemInTop()))
+                                if (PriorityInExpresion(infix[i]) > PriorityInStack(stack.Peek()))
                                 {
                                     stack.Push(infix[i]);
                                 }
